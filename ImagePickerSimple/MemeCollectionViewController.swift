@@ -19,6 +19,8 @@ class MemeCollectionViewController: UICollectionViewController {
     // MARK: IBOutlets
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +41,17 @@ class MemeCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    // To be able to see the Meme we should reload the collection view when returning from the Meme Editor.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        collectionView?.reloadData()
+    }
 
 
 
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -56,13 +59,9 @@ class MemeCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MemeCollectionViewCell
-        let memes = appDelegate.memes[(indexPath as NSIndexPath).row]
-        
-        // Set the name and image
-        
-        cell.memeImageView.image = memes.memedImage
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MemeCollectionViewCell
+        let meme = appDelegate.memes[indexPath.row]
+        cell.memeImageView.image = meme.memedImage
         
         return cell
     }

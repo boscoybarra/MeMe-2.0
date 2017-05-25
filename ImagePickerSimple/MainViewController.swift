@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MainViewController: UIViewController, UINavigationControllerDelegate {
 
     
     // MARK: IBOutlets
@@ -54,44 +54,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         unsubscribeFromKeyboardNotifications()
     }
     
-    // MARK: UI Setup
-    
-    func setInitialView() {
-        
-        imagePickerView.image = nil
-        setupTextFieldWithDefaultSettings(topText, withText: "TOP")
-        setupTextFieldWithDefaultSettings(bottomText, withText: "BOTTOM")
-        shareButton.isEnabled = true
-    }
-    
-    func setupTextFieldWithDefaultSettings(_ textField: UITextField, withText text: String) {
-        
-        textField.delegate = self
-        textField.defaultTextAttributes = memeTextAttributes
-        textField.textAlignment = .center
-        textField.text = text
-        textField.borderStyle = .none
-    }
-    
-    
-    // MARK: Display Image
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imagePickerView.image = image
-        } else {
-            print("Something went wrong")
-        }
-        
-        imagePickerView.contentMode = .scaleAspectFit
-        
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     // MARK: Save
     
@@ -122,37 +84,22 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
-        //self.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+        view.drawHierarchy(in: self.view.frame,afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // Show Bar
         configureBar(hidden: false)
       
-        
         return memedImage
     }
     
-    // MARK: Text fields
+    // MARK: UIAlert
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        if(textField.text == "TOP" || textField.text == "BOTTOM") {
-            textField.text = ""
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func presentPicker(withSource source: UIImagePickerControllerSourceType) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = source
-        present(pickerController, animated: true, completion: nil)
+    func imageNotSaved() {
+        let alert = UIAlertController(title: "Select an Image", message: "Meme could not be saved because you did not select an image.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: IBActions
@@ -174,6 +121,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
            
             if complete {
                 self.save(memedImage: memedImage)
+                self.readyToShareAndSave()
                 self.dismiss(animated: true, completion: nil)
             }
             
@@ -225,3 +173,81 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
 }
 
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension MainViewController: UIImagePickerControllerDelegate {
+    
+    
+    func presentPicker(withSource source: UIImagePickerControllerSourceType) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = source
+        present(pickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imagePickerView.image = image
+            
+            // Enable the share button
+            readyToShareAndSave()
+            
+        } else {
+            print("Something went wrong")
+        }
+        
+        imagePickerView.contentMode = .scaleAspectFit
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+
+extension MainViewController: UITextFieldDelegate {
+    
+    // MARK: UI Setup
+    
+    func setInitialView() {
+        
+        imagePickerView.image = nil
+        setupTextFieldWithDefaultSettings(topText, withText: "TOP")
+        setupTextFieldWithDefaultSettings(bottomText, withText: "BOTTOM")
+        shareButton.isEnabled = true
+    }
+    
+    func readyToShareAndSave() {
+        shareButton.isEnabled = true
+    }
+    
+    func setupTextFieldWithDefaultSettings(_ textField: UITextField, withText text: String) {
+        
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.text = text
+        textField.borderStyle = .none
+    }
+    
+    // MARK: Text fields
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if(textField.text == "TOP" || textField.text == "BOTTOM") {
+            textField.text = ""
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}

@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2954.4000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="2393" y="206"/>
         </scene>
         <!--Meme Detail View Controller-->
         <scene sceneID="blg-al-SBU">
@@ -137,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmo-tf-L1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3775.1999999999998" y="137.18140929535232"/>
+            <point key="canvasLocation" x="3073" y="206"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eTp-ex-kAe">
@@ -160,6 +160,7 @@
         <!--Meme Table View Controller-->
         <scene sceneID="9Y3-6M-GvL">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ww8-Q2-sl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Laq-Vd-1kf" customClass="MemeTableViewController" customModule="ImagePickerSimple" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tUi-cx-4x8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -188,9 +189,8 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ww8-Q2-sl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="789"/>
+            <point key="canvasLocation" x="868" y="788"/>
         </scene>
         <!--Meme Collection View Controller-->
         <scene sceneID="fCc-uh-RAQ">
@@ -268,13 +268,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywM-Fb-SOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015.2" y="137.18140929535232"/>
+            <point key="canvasLocation" x="1734" y="206"/>
         </scene>
-        <!--Item-->
+        <!--Table Meme-->
         <scene sceneID="sbz-zh-7Xn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RRc-Wo-FpZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zjS-rK-XyQ"/>
+                    <tabBarItem key="tabBarItem" title="Table Meme" selectedImage="table_30x30" id="zjS-rK-XyQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mZu-Ty-vci">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -289,11 +289,11 @@
             </objects>
             <point key="canvasLocation" x="-71" y="789"/>
         </scene>
-        <!--Item-->
+        <!--Meme Collection-->
         <scene sceneID="Ra8-zo-YfQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jYi-6g-cUp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="wRn-qa-YNG"/>
+                    <tabBarItem key="tabBarItem" title="Meme Collection" selectedImage="collection_30x30" id="wRn-qa-YNG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZJf-Gj-eWe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -309,6 +309,10 @@
             <point key="canvasLocation" x="-71.200000000000003" y="-349.47526236881561"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection_30x30" width="30" height="30"/>
+        <image name="table_30x30" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PDp-qk-l7q"/>
     </inferredMetricsTieBreakers>
