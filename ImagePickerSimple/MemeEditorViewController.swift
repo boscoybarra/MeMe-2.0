@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MemeEditorViewController.swift
 //  ImagePickerSimple
 //
 //  Created by J B on 5/19/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UINavigationControllerDelegate {
 
     
     // MARK: IBOutlets
@@ -182,7 +182,7 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
 
 // MARK: - UIImagePickerControllerDelegate
 
-extension MainViewController: UIImagePickerControllerDelegate {
+extension MemeEditorViewController: UIImagePickerControllerDelegate {
     
     func presentPicker(withSource source: UIImagePickerControllerSourceType) {
         let pickerController = UIImagePickerController()
@@ -214,7 +214,7 @@ extension MainViewController: UIImagePickerControllerDelegate {
 
 // MARK: - UITextFieldDelegate
 
-extension MainViewController: UITextFieldDelegate {
+extension MemeEditorViewController: UITextFieldDelegate {
     
     // MARK: UI Setup
     
