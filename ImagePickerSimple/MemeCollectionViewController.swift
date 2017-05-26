@@ -62,7 +62,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         
         let selectedMeme = appDelegate.memes[indexPath.row]
-        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "memeCollectionCell") as! MemeDetailViewController
+        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.selectedMeme = selectedMeme
         self.navigationController!.pushViewController(detailController, animated: true)
         

@@ -59,7 +59,7 @@ class MemeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedMeme = appDelegate.memes[indexPath.row]
-        let detailController = self.storyboard?.instantiateViewController(withIdentifier: reuseIdentifier) as! MemeDetailViewController
+        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.selectedMeme = selectedMeme
         self.navigationController!.pushViewController(detailController, animated: true)
     }

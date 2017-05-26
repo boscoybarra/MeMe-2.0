@@ -54,19 +54,26 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
         unsubscribeFromKeyboardNotifications()
     }
     
-    
     // MARK: Save
     
-    func save(memedImage: UIImage) {
+    func save(memedImage: UIImage?) {
         
-        // Create the meme
+        guard let memedImage = memedImage,
+            let _ = imagePickerView.image else {
+                
+                print("No image selected or image could not be saved")
+                // Show Alert to user about missing elements
+                imageNotSaved()
+                
+                return
+        }
+        
         let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, imagePickerView: imagePickerView.image!, memedImage: memedImage)
         
         // Add it to the memes array in the Application Delegate
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        
     }
     
     // MARK: Generate Meme Image
@@ -78,7 +85,6 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func generateMemedImage() -> UIImage {
-        
         // Hide Bar
         configureBar(hidden: true)
         
@@ -178,7 +184,6 @@ class MainViewController: UIViewController, UINavigationControllerDelegate {
 
 extension MainViewController: UIImagePickerControllerDelegate {
     
-    
     func presentPicker(withSource source: UIImagePickerControllerSourceType) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -205,7 +210,6 @@ extension MainViewController: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 // MARK: - UITextFieldDelegate
@@ -249,5 +253,4 @@ extension MainViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
 }

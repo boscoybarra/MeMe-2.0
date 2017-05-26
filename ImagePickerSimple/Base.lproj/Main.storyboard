@@ -108,7 +108,7 @@
         <!--Meme Detail View Controller-->
         <scene sceneID="blg-al-SBU">
             <objects>
-                <viewController id="LjD-o4-Iup" customClass="MemeDetailViewController" customModule="ImagePickerSimple" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailViewController" id="LjD-o4-Iup" customClass="MemeDetailViewController" customModule="ImagePickerSimple" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3bB-ah-RkM"/>
                         <viewControllerLayoutGuide type="bottom" id="Mt2-Od-Bqm"/>
