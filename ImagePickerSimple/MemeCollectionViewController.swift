@@ -33,13 +33,6 @@ class MemeCollectionViewController: UICollectionViewController {
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
     
     // To be able to see the Meme we should reload the collection view when returning from the Meme Editor.
@@ -69,7 +62,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         
         let selectedMeme = appDelegate.memes[indexPath.row]
-        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "memeCollectionCell") as! MemeDetailViewController
         detailController.selectedMeme = selectedMeme
         self.navigationController!.pushViewController(detailController, animated: true)
         

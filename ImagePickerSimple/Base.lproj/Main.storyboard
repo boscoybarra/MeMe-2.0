@@ -160,7 +160,6 @@
         <!--Meme Table View Controller-->
         <scene sceneID="9Y3-6M-GvL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ww8-Q2-sl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Laq-Vd-1kf" customClass="MemeTableViewController" customModule="ImagePickerSimple" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tUi-cx-4x8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -189,6 +188,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ww8-Q2-sl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="868" y="788"/>
         </scene>
@@ -196,7 +196,7 @@
         <scene sceneID="fCc-uh-RAQ">
             <objects>
                 <collectionViewController id="VEs-Nu-eBw" customClass="MemeCollectionViewController" customModule="ImagePickerSimple" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2ud-Qd-CE2">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="2ud-Qd-CE2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -314,6 +314,6 @@
         <image name="table_30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PDp-qk-l7q"/>
+        <segue reference="MQo-7a-ulr"/>
     </inferredMetricsTieBreakers>
 </document>
